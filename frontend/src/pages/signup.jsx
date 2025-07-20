@@ -80,6 +80,7 @@ export default function Signup(){
             id="username"
             type="username"
             className="input input-bordered w-full"
+            { ...register("username")}
           />
         </div>
         <div>
@@ -93,6 +94,7 @@ export default function Signup(){
             id="email"
             type="email"
             className="input input-bordered w-full"
+            { ...register("email")}
           />
         </div>
         <div>
@@ -106,6 +108,7 @@ export default function Signup(){
             id="password"
             type="password"
             className="input input-bordered w-full"
+            { ...register("password")}
           />
         </div>
         <button
