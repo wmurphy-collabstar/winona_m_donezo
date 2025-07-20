@@ -38,6 +38,31 @@ export default function Login() {
     }
   };
 
+  function LoginAlert() {
+    return (
+      <>
+        {
+          alert.show &&
+            <div 
+              className="alert alert-error"
+            >
+              <div 
+                className="inline-flex justify-stretch items-center"
+              >
+                {alert.message}
+                <button
+                  onClick={() => showAlert({ message: "", show: false})}
+                  className="btn btn-ghost btn-circle"
+                >
+                  X
+                </button>
+              </div>
+            </div>
+        }
+      </>
+    )
+  }
+
   function LoginForm() {
     return (
       <form className="space-y-4" onSubmit={handleSubmit(loginUser)}>
