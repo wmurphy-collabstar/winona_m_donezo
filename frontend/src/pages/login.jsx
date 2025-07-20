@@ -19,6 +19,25 @@ export default function Login() {
     }
   });
 
+  //The values param comes from the handleSubmit function in useForm.
+  //It takes the values from the form and puts it in this function so we have access.
+  const loginUser = async (values) => {
+    // Call Supabase's signInWithPassword method to log in with the provided values (email and password)
+    const { error } = await supabase.auth.signInWithPassword(values);
+
+    // Check if there was an error during login
+    if (error) {
+      // If there's an error, show an alert with the error message
+      showAlert({
+        show: true, // Display the alert
+        message: error.message // Show the error message from the Supabase response
+      });
+    } else {
+      // If login is successful, navigate the user to the "/todos" page
+      navigate("/todos");
+    }
+  };
+
   function LoginForm() {
     return (
       <form className="space-y-4">
