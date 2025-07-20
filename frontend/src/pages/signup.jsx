@@ -5,6 +5,13 @@ import supabase from "../client";
 
 export default function Signup(){
 
+  const [alert, showAlert] = useState({
+    message: "",
+    show: false
+  });
+
+  const navigate = useNavigate();
+
   function SignupAlert() {
     return (
       <>
