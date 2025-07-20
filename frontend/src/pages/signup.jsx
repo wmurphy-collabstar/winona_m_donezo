@@ -12,6 +12,33 @@ export default function Signup(){
 
   const navigate = useNavigate();
 
+  const { register, handleSubmit} = useForm({
+    defaultValues: {
+      username: "",
+      email: "",
+      password: ""
+    }
+  });
+
+  const signupUser = async (values) => {
+    const { error } = await supabase.auth.signUp({
+      email: values.email,
+      password: values.password,
+      data: {
+        username: values.username
+      }
+    });
+
+    if(error){
+      showAlert({
+        show: true,
+        message: error.message
+      });
+    } else {
+      navigate("/todos");
+    }
+  };
+
   function SignupAlert() {
     return (
       <>
