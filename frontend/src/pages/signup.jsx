@@ -1,3 +1,8 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import supabase from "../client";
+
 export default function Signup(){
   return (
    <div className="bg-gray-100 flex items-center justify-center min-h-screen">
