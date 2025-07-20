@@ -40,7 +40,7 @@ export default function Login() {
 
   function LoginForm() {
     return (
-      <form className="space-y-4">
+      <form className="space-y-4" onSubmit={handleSubmit(loginUser)}>
         <div>
           <label 
             htmlFor="email" 
@@ -52,6 +52,7 @@ export default function Login() {
             id="email" 
             type="email" 
             className="input input-bordered w-full" 
+            { ...register("email")}
           />
         </div>
         <div>
@@ -65,6 +66,7 @@ export default function Login() {
             id="password"
             type="password"
             className="input input-bordered w-full"
+            { ...register("password")}
           />
         </div>
         <button
