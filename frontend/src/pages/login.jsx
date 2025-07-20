@@ -12,6 +12,13 @@ export default function Login() {
 
   const navigate = useNavigate();
 
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      email: "",
+      password: ""
+    }
+  });
+
   function LoginForm() {
     return (
       <form className="space-y-4">
