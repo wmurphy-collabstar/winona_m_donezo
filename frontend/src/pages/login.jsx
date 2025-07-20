@@ -5,6 +5,13 @@ import supabase from "../client";
 
 export default function Login() {
 
+  const [alert, showAlert] = useState({
+    message: "",
+    show: false
+  });
+
+  const navigate = useNavigate();
+
   function LoginForm() {
     return (
       <form className="space-y-4">
