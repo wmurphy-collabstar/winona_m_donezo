@@ -109,6 +109,7 @@ export default function Login() {
       <div className="max-w-md w-full bg-white p-6 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         {/* Add LoginForm Here.... */}
+        <LoginAlert/>
         <LoginForm/>
         <p className="mt-4 text-center text-sm">Don't have an account? <Link to="/signup" className="text-blue-500 hover:underline">Sign up</Link></p>
       </div>
