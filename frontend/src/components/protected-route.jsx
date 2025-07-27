@@ -24,4 +24,11 @@ export default function ProtectedRoute({ children }){
         };
     }, []);
 
+    if(!isSessionChecked){
+        return <div>Loading...</div>
+    }else {
+        return (
+            <>{session ? children : <Navigate to="/login"/>}</>
+        );
+    }
 }
