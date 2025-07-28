@@ -113,6 +113,40 @@ export default function Todos(){
     );
   }
 
+  function TodoItemList() {
+    return (
+      <div className="w-lg h-sm flex column items-center justify-center gap-4">
+        {data.success && data.todos.length >= 1 && (
+          <ul className="flex column items-center justify-center gap-4">
+            {
+              data.todos.map(todo => (
+                <li className="inline-flex items-center gap-4">
+                  <div className="w-md">
+                    <h3 className="text-lg">
+                      {todo.name}
+                    </h3>
+                    <p className="text-sm">{todo.description}</p>
+                  </div>
+                  <div className="w-md">
+                    <label className="swap">
+                      <input type="checkbox" onClick={() => markAsCompleted(todo.id)} />
+                      <div className="swap-on">
+                        Yes
+                      </div>
+                      <div className="swap-off">
+                        No
+                      </div>
+                    </label>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        )}
+      </div>
+    );
+  }
+
   if (isLoading){
     return (
       <div>Loading Todos...</div>
@@ -128,6 +162,7 @@ export default function Todos(){
   return (
     <>
       <NewTodoButton/>
+      <TodoItemList/>
       <TodoModal/>
     </>
   )
