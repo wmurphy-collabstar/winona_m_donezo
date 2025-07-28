@@ -7,6 +7,8 @@ export default function Todos(){
 
   const modalRef = useRef();
 
+  const queryClient = useQueryClient();
+
   const { mutate: createNewTodo } = useMutation({
     // The key used to identify this mutation in React Query's cache
     mutationKye: ["newTodo"],
@@ -21,7 +23,21 @@ export default function Todos(){
       // Return the response data (e.g., the newly created to-do object)
       return data;
     }
-  })
+  });
+
+  const { mutate: markAsCompleted } = useMutation({
+    mutationKey: ["markAsCompleted"],
+    mutationFn: async (todoId) => {
+      const axiosInstance = await getAxiosClient();
+
+      const { data } = await axiosInstance.put(`http://localhost:8080/todos/${todoId}/completed`);
+
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries("todos");
+    }
+  });
 
   const { data, isError, isLoading } = useQuery({
     // A unique key to identify this query in React Query's cache
