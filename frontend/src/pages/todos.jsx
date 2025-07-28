@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 
 export default function Todos(){
 
+  const modalRef = useRef();
+
   function NewTodoButton(){
     return (
       <button className="btn btn-primary" onClick={() => toggleNewTodoModal()}>
