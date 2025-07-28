@@ -56,7 +56,7 @@ export default function Todos(){
               <button type="submit" className="btn btn-primary">
                 Create Todo
               </button>
-              <button type="button" className="btn btn-ghost">
+              <button type="button" className="btn btn-ghost" onClick={toggleNewTodoModal}>
                 Close
               </button>
             </div>
@@ -69,6 +69,7 @@ export default function Todos(){
   return (
     <>
       <NewTodoButton/>
+      <TodoModal/>
     </>
   )
 }
