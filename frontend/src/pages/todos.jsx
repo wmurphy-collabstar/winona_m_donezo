@@ -75,6 +75,7 @@ export default function Todos(){
 
   const handleNewTodo = (values) => {
     console.log(values);
+    createNewTodo(values);
     toggleNewTodoModal();
   }
 
@@ -136,7 +137,7 @@ export default function Todos(){
           <ul className="flex column items-center justify-center gap-4">
             {
               data.todos.map(todo => (
-                <li className="inline-flex items-center gap-4">
+                <li className="inline-flex items-center gap-4" key={todo.id}>
                   <div className="w-md">
                     <h3 className="text-lg">
                       {todo.name}
