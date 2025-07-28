@@ -24,6 +24,11 @@ export default function Todos(){
     }
   });
 
+  const handleNewTodo = (values) => {
+    console.log(values);
+    toggleNewTodoModal();
+  }
+
   function NewTodoButton(){
     return (
       <button className="btn btn-primary" onClick={() => toggleNewTodoModal()}>
@@ -37,7 +42,7 @@ export default function Todos(){
       <dialog ref={modalRef} className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">New Todo</h3>
-          <form>
+          <form onSubmit={handleSubmit(handleNewTodo)}>
             <label className="form-control w-full">
               <div className="label">
                 <span className="label-text">Name of Todo</span>
