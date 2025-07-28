@@ -23,6 +23,22 @@ export default function Todos(){
     }
   })
 
+  const { data, isError, isLoading } = useQuery({
+    // A unique key to identify this query in React Query's cache
+    queryKey: ["todos"],
+
+    // The function responsible for fetching the data
+    queryFn: async () => {
+      const axiosInstance = await getAxiosClient();
+
+      // Use the Axios instance to send a GET request to fetch the list of todos
+      const { data } = await axiosInstance.get("http://localhost:8080/todos");
+
+      //Return the fetched data (React Query will cache it under the querKey)
+      return data;
+    }
+  });
+
   const toggleNewTodoModal = () => {
     // Check if the modal is currently open by accessing the `open` property of `modalRef`.
     if (modalRef.current.open){
