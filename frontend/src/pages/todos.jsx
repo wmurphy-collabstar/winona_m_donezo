@@ -116,7 +116,7 @@ export default function Todos(){
   function TodoItemList() {
     return (
       <div className="w-lg h-sm flex column items-center justify-center gap-4">
-        {data.success && data.todos.length >= 1 && (
+        {data.success && data.todos && data.todos.length >= 1 ? (
           <ul className="flex column items-center justify-center gap-4">
             {
               data.todos.map(todo => (
@@ -142,7 +142,7 @@ export default function Todos(){
               ))
             }
           </ul>
-        )}
+        ) : <p>There are currently no to-dos in your Todo list. Go add one right now... Get to it!</p>}
       </div>
     );
   }
