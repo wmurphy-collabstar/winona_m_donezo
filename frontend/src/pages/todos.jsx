@@ -113,6 +113,18 @@ export default function Todos(){
     );
   }
 
+  if (isLoading){
+    return (
+      <div>Loading Todos...</div>
+    );
+  }
+
+  if (isError){
+    return (
+      <div>There was an error</div>
+    );
+  }
+
   return (
     <>
       <NewTodoButton/>
