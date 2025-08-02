@@ -36,7 +36,6 @@ export default function Todos(){
     },
     onSuccess: () => {
       queryClient.invalidateQueries("todos");
-      swapBtnRef.current.classList.toggle("swap-active");
     }
   });
 
@@ -137,7 +136,7 @@ export default function Todos(){
         {data.success && data.todos && data.todos.length >= 1 ? (
           <ul className="flex column flex-col w-80 items-center justify-center gap-4">
             {
-              data.todos.map((todo, index) => (
+              data.todos.map(todo => (
                 <li className="inline-flex items-center gap-4 border border-gray-600 py-5 px-3 my-2 rounded-xl" key={todo.id}>
                   <div className="w-md">
                     <h3 className="text-lg">
