@@ -36,6 +36,7 @@ export default function Todos(){
     },
     onSuccess: () => {
       queryClient.invalidateQueries("todos");
+      swapBtnRef.current.classList.toggle("swap-active");
     }
   });
 
@@ -81,7 +82,7 @@ export default function Todos(){
 
   function NewTodoButton(){
     return (
-      <button className="btn btn-primary" onClick={() => toggleNewTodoModal()}>
+      <button className="btn btn-primary block mx-auto mb-5" onClick={() => toggleNewTodoModal()}>
         New Todo
       </button>
     );
@@ -134,19 +135,22 @@ export default function Todos(){
     return (
       <div className="w-lg h-sm flex column items-center justify-center gap-4">
         {data.success && data.todos && data.todos.length >= 1 ? (
-          <ul className="flex column items-center justify-center gap-4">
+          <ul className="flex column flex-col w-80 items-center justify-center gap-4">
             {
-              data.todos.map(todo => (
-                <li className="inline-flex items-center gap-4" key={todo.id}>
+              data.todos.map((todo, index) => (
+                <li className="inline-flex items-center gap-4 border border-gray-600 py-5 px-3 my-2 rounded-xl" key={todo.id}>
                   <div className="w-md">
                     <h3 className="text-lg">
                       {todo.name}
                     </h3>
                     <p className="text-sm">{todo.description}</p>
                   </div>
-                  <div className="w-md">
+                  <div className="w-md border p-2 px-4 rounded-xl border-gray-600 btn btn-primary">
                     <label className="swap">
-                      <input type="checkbox" onClick={() => markAsCompleted(todo.id)} />
+                      <input 
+                        type="checkbox" 
+                        checked={todo.completed || "false"} 
+                        onClick={() => markAsCompleted(todo.id)} />
                       <div className="swap-on">
                         Yes
                       </div>
@@ -177,10 +181,10 @@ export default function Todos(){
   }
 
   return (
-    <>
+    <div className="px-10">
       <NewTodoButton/>
       <TodoItemList/>
       <TodoModal/>
-    </>
+    </div>
   )
 }
